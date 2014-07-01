@@ -30,6 +30,7 @@ class TestsVectorOperatable: XCTestCase {
     p.horizontal = self.expected*2
     p.vertical = self.expected*2
     
+    
     XCTAssertEqual(p.x, CGFloat(self.expected*2))
     XCTAssertEqual(p.y, CGFloat(self.expected*2))
     XCTAssertEqual(p.vertical, self.expected*2)

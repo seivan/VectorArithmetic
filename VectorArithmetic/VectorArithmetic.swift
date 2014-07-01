@@ -1,5 +1,4 @@
 import CoreGraphics
-import Foundation
 
 protocol VectorOperatable  {
   init(horizontal:Double,vertical:Double)
@@ -14,8 +13,8 @@ protocol VectorArithmetic : VectorOperatable {
   var magnitude:Double {get}
   var lengthSquared:Double {get}
   var length:Double {get}
-  func dotProduct <T : VectorArithmetic>(point:T) -> Double
-  func distanceTo<T : VectorArithmetic> (endPoint:T) -> Double
+  func dotProduct <T : VectorArithmetic>(vector:T) -> Double
+  func distanceTo <T : VectorArithmetic>(vector:T) -> Double
   
   var reversed:Self {get}
   mutating func reverse()
@@ -33,8 +32,6 @@ protocol VectorArithmetic : VectorOperatable {
   mutating func angle(scalar:Double)
   
 }
-
-
 
 
 @infix func == <T:VectorOperatable, U:VectorOperatable> (lhs:T,rhs:U) -> Bool {
@@ -104,11 +101,7 @@ protocol VectorArithmetic : VectorOperatable {
 
 
 struct InternalVectorArithmetic {
-  
-  static func vectorWithAngle<T:VectorArithmetic>(angle:Double) -> T  {
-    return T(horizontal: cos(angle), vertical: sin(angle))
-  }
-  
+    
   static func angleInRadians  <T : VectorArithmetic>(vector:T) -> Double {
     let normalized = vector.normalized
     let theta = atan2(normalized.vertical, normalized.horizontal)
@@ -163,7 +156,7 @@ struct InternalVectorArithmetic {
     return vector.normalized * scalar
   }
   
-  static func vectorWithAngle <T : VectorArithmetic>(vector:T, scalar:Double) -> T {
+  static func vectorWithAngle <T:VectorArithmetic>(vector:T, scalar:Double) -> T {
     let length = vector.length
     return T(horizontal: cos(scalar) * length, vertical: sin(scalar) * length)
     }
@@ -172,226 +165,155 @@ struct InternalVectorArithmetic {
 
 extension CGPoint: VectorArithmetic  {
 
-#if !(arch(x86_64) || arch(arm64))
-  init(x:Double, y:Double) {
-    self.init(x:CGFloat(x), y:CGFloat(y))
-  }
-#endif
   
   init(horizontal:Double,vertical:Double) {
     self.init(x: horizontal, y: vertical)
   }
   
-  
+#if !(arch(x86_64) || arch(arm64))
+  init(x:Double, y:Double) {
+    self.init(x:CGFloat(x), y:CGFloat(y))
+  }
   var horizontal:Double {
-  get {
-    #if !(arch(x86_64) || arch(arm64))
-      return Double(self.x)
-      #else
-      return self.x
-    #endif
+    get { return Double(self.x)      }
+    set { self.x = CGFloat(newValue) }
   }
-
-  set {
-    #if !(arch(x86_64) || arch(arm64))
-      self.x = CGFloat(newValue)
-      #else
-      self.x = newValue
-    #endif
-  }
-  }
-  
   var vertical:Double {
-    get {
-#if !(arch(x86_64) || arch(arm64))
-      return Double(self.y)
+    get {return Double(self.y)       }
+    set {self.y = CGFloat(newValue)  }
+  }
+  
 #else
-      return self.y
+  var horizontal:Double {
+    get { return self.x     }
+    set { self.x = newValue }
+  }
+  var vertical:Double {
+    get { return self.y     }
+    set { self.y = newValue }
+  }
 #endif
-  }
-    set {
-#if !(arch(x86_64) || arch(arm64))
-      self.y = CGFloat(newValue)
-#else
-      self.y = newValue
-#endif
-      }
-  }
-  
 
-  var angleInRadians:Double {
-    return InternalVectorArithmetic.angleInRadians(self)
-  }
-  
-  var magnitude:Double {
-    return InternalVectorArithmetic.magnitude(self)
-  }
-  
-  var length:Double {
-    return self.magnitude
-  }
-  
-  var lengthSquared:Double {
-    return InternalVectorArithmetic.lengthSquared(self)
-  }
-  
-  func dotProduct <T : VectorArithmetic> (point:T) -> Double {
-    return InternalVectorArithmetic.dotProduct(self, otherVector: point)
-  }
-
-  
-  func distanceTo <T : VectorArithmetic> (endPoint:T) -> Double {
-    return InternalVectorArithmetic.distanceTo(self, otherVector: endPoint)
-  }
-  
-  var reversed:CGPoint {
-      return InternalVectorArithmetic.reversed(self)
-  }
-
-  mutating func reverse() {
-    self = self.reversed
-  }
-
-  
-  var normalized:CGPoint {
-    return InternalVectorArithmetic.normalized(self)
-  }
-  
-  
-  mutating func normalize() {
-    self = self.normalized
-  }
-
-  
-  func limited(scalar:Double) -> CGPoint {
-    return InternalVectorArithmetic.limit(self, scalar: scalar)
-  }
-  
-  mutating func limit(scalar:Double) {
-    self  = self.limited(scalar);
-  }
-  
-
-  
-  func scaled(scalar:Double) -> CGPoint {
-    return InternalVectorArithmetic.scale(self, scalar: scalar)
-  }
-
-  mutating func scale(scalar:Double) {
-    self = self.scaled(scalar)
-  }
-  
-  func angled(scalar:Double) -> CGPoint {
-    return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar)
-  }
-  
-  mutating func angle(scalar:Double) {
-    self = self.angled(scalar);
-  }
-
-  
+  var angleInRadians:Double { return InternalVectorArithmetic.angleInRadians(self)}
+  var magnitude:Double { return InternalVectorArithmetic.magnitude(self) }
+  var length:Double { return self.magnitude }
+  var lengthSquared:Double { return InternalVectorArithmetic.lengthSquared(self) }
+  func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
+  func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
+  var reversed:CGPoint { return InternalVectorArithmetic.reversed(self) }
+  mutating func reverse() { self = self.reversed }
+  var normalized:CGPoint { return InternalVectorArithmetic.normalized(self) }
+  mutating func normalize() { self = self.normalized }
+  func limited(scalar:Double) -> CGPoint { return InternalVectorArithmetic.limit(self, scalar: scalar) }
+  mutating func limit(scalar:Double) { self  = self.limited(scalar); }
+  func scaled(scalar:Double) -> CGPoint { return InternalVectorArithmetic.scale(self, scalar: scalar) }
+  mutating func scale(scalar:Double) { self = self.scaled(scalar) }
+  func angled(scalar:Double) -> CGPoint { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
+  mutating func angle(scalar:Double) { self = self.angled(scalar); }
   
 }
 
 
-extension CGSize: VectorOperatable   {
-#if !(arch(x86_64) || arch(arm64))
-  init(width:Double, height:Double) {
-    self.init(width:CGFloat(width), height:CGFloat(height))
-  }
-#endif
+extension CGSize: VectorArithmetic   {
 
   init(horizontal:Double,vertical:Double) {
     self.init(width: horizontal, height: vertical)
   }
 
+#if !(arch(x86_64) || arch(arm64))
+  init(width:Double, height:Double) {
+    self.init(width:CGFloat(width), height:CGFloat(height))
+  }
   var horizontal:Double {
-  get {
-    #if !(arch(x86_64) || arch(arm64))
-      return Double(self.width)
-      #else
-      return self.width
-    #endif
+    get { return Double(self.width)      }
+    set { self.width = CGFloat(newValue) }
   }
-  
-  set {
-    #if !(arch(x86_64) || arch(arm64))
-      self.width = CGFloat(newValue)
-      #else
-      self.width = newValue
-    #endif
-    }
-  }
-  
   var vertical:Double {
-  get {
-    #if !(arch(x86_64) || arch(arm64))
-      return Double(self.height)
-      #else
-      return self.height
-    #endif
+    get {return Double(self.height)       }
+    set {self.height = CGFloat(newValue)  }
   }
   
-  set {
-    #if !(arch(x86_64) || arch(arm64))
-      self.height = CGFloat(newValue)
-      #else
-      self.height = newValue
-    #endif
+  #else
+  var horizontal:Double {
+    get { return self.width }
+    set { self.width = newValue }
   }
+  var vertical:Double {
+    get { return self.height     }
+    set { self.height = newValue }
   }
+  #endif
+  
+  
+  var angleInRadians:Double { return InternalVectorArithmetic.angleInRadians(self) }
+  var magnitude:Double { return InternalVectorArithmetic.magnitude(self) }
+  var length:Double { return self.magnitude }
+  var lengthSquared:Double { return InternalVectorArithmetic.lengthSquared(self) }
+  func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
+  func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
+  var reversed:CGSize { return InternalVectorArithmetic.reversed(self) }
+  mutating func reverse() { self = self.reversed }
+  var normalized:CGSize { return InternalVectorArithmetic.normalized(self) }
+  mutating func normalize() { self = self.normalized }
+  func limited(scalar:Double) -> CGSize { return InternalVectorArithmetic.limit(self, scalar: scalar) }
+  mutating func limit(scalar:Double) { self  = self.limited(scalar); }
+  func scaled(scalar:Double) -> CGSize { return InternalVectorArithmetic.scale(self, scalar: scalar) }
+  mutating func scale(scalar:Double) { self = self.scaled(scalar) }
+  func angled(scalar:Double) -> CGSize { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
+  mutating func angle(scalar:Double) { self = self.angled(scalar) }
+  
   
 }
 
-extension CGVector: VectorOperatable   {
+extension CGVector: VectorArithmetic   {
   
-#if !(arch(x86_64) || arch(arm64))
-  init(_ dx:Double, _ dy:Double) {
-    self.dx = CGFloat(dx)
-    self.dy = CGFloat(dy)
-  }
-#endif
-
   init(horizontal:Double,vertical:Double) {
     self.dx = CGFloat(horizontal)
     self.dy = CGFloat(vertical)
 
   }
   
+#if !(arch(x86_64) || arch(arm64))
+  init(_ dx:Double, _ dy:Double) {
+    self.dx = CGFloat(dx)
+    self.dy = CGFloat(dy)
+  }
+  
   var horizontal:Double {
-  get {
-    #if !(arch(x86_64) || arch(arm64))
-      return Double(self.dx)
-      #else
-      return self.dx
-    #endif
+    get { return Double(self.dy)      }
+    set { self.dy = CGFloat(newValue) }
   }
-  
-  set {
-    #if !(arch(x86_64) || arch(arm64))
-      self.dx = CGFloat(newValue)
-      #else
-      self.dx = newValue
-    #endif
-  }
-  }
-  
   var vertical:Double {
-  get {
-    #if !(arch(x86_64) || arch(arm64))
-    return Double(self.dy)
-    #else
-    return self.dy
-    #endif
+    get {return Double(self.dy)       }
+    set {self.dy = CGFloat(newValue)  }
   }
   
-  set {
-    #if !(arch(x86_64) || arch(arm64))
-      self.dy = CGFloat(newValue)
-    #else
-      self.dy = newValue
-    #endif
-    }
+#else
+  var horizontal:Double {
+    get { return self.dx     }
+    set { self.dx = newValue }
   }
+  var vertical:Double {
+    get { return self.dy     }
+    set { self.dy = newValue }
+  }
+#endif
+
+  var angleInRadians:Double { return InternalVectorArithmetic.angleInRadians(self) }
+  var magnitude:Double { return InternalVectorArithmetic.magnitude(self) }
+  var length:Double { return self.magnitude }
+  var lengthSquared:Double { return InternalVectorArithmetic.lengthSquared(self) }
+  func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
+  func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
+  var reversed:CGVector { return InternalVectorArithmetic.reversed(self) }
+  mutating func reverse() { self = self.reversed }
+  var normalized:CGVector { return InternalVectorArithmetic.normalized(self) }
+  mutating func normalize() { self = self.normalized }
+  func limited(scalar:Double) -> CGVector { return InternalVectorArithmetic.limit(self, scalar: scalar) }
+  mutating func limit(scalar:Double) { self  = self.limited(scalar); }
+  func scaled(scalar:Double) -> CGVector { return InternalVectorArithmetic.scale(self, scalar: scalar) }
+  mutating func scale(scalar:Double) { self = self.scaled(scalar) }
+  func angled(scalar:Double) -> CGVector { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
+  mutating func angle(scalar:Double) { self = self.angled(scalar) }
 
 }
