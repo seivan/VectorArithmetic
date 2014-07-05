@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     self.window!.backgroundColor = UIColor.whiteColor()
     self.window!.makeKeyAndVisible()
+    let x = 23.3
+    
+    let p = CGPoint(x: x, y: x)
+    println(p)
     return true
   }
 
