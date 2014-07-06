@@ -148,9 +148,6 @@ class TestsCGSizeOperators : SuperTestsOperators, TestOperators {
     XCTAssertEqual(self.vectorSize.width, CGFloat(pow(self.doubleValue, 2)))
     XCTAssertEqual(self.vectorSize.height, CGFloat(pow(self.doubleValue, 2)))
     
-    self.vectorSize = self.vectorSize * 2
-    XCTAssertEqual(self.vectorSize.width, CGFloat(pow(self.doubleValue, 3)))
-    XCTAssertEqual(self.vectorSize.height, CGFloat(pow(self.doubleValue, 3)))
     
   }
   func testMultiplicationScalarAssignment() {
@@ -158,9 +155,6 @@ class TestsCGSizeOperators : SuperTestsOperators, TestOperators {
     XCTAssertEqual(self.vectorSize.width, CGFloat(pow(self.doubleValue, 2)))
     XCTAssertEqual(self.vectorSize.height, CGFloat(pow(self.doubleValue, 2)))
     
-    self.vectorSize *= 2
-    XCTAssertEqual(self.vectorSize.width, CGFloat(pow(self.doubleValue, 3)))
-    XCTAssertEqual(self.vectorSize.height, CGFloat(pow(self.doubleValue, 3)))
     
   }
   func testDivisionScalar() {
@@ -168,9 +162,6 @@ class TestsCGSizeOperators : SuperTestsOperators, TestOperators {
     XCTAssertEqual(self.vectorSize.width, 1)
     XCTAssertEqual(self.vectorSize.height, 1)
     
-    self.vectorSize = self.vectorSize / 2
-    XCTAssertEqual(self.vectorSize.width, 0.5)
-    XCTAssertEqual(self.vectorSize.height, 0.5)
     
   }
   func testDivisionScalarAssignment() {
@@ -178,9 +169,6 @@ class TestsCGSizeOperators : SuperTestsOperators, TestOperators {
     XCTAssertEqual(self.vectorSize.width, 1)
     XCTAssertEqual(self.vectorSize.height, 1)
     
-    self.vectorSize /= 2
-    XCTAssertEqual(self.vectorSize.width, 0.5)
-    XCTAssertEqual(self.vectorSize.height, 0.5)
     
   }
   
