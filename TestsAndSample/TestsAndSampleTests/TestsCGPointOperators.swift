@@ -11,15 +11,18 @@ import XCTest
 
 class TestsCGPointOperators : SuperTestsOperators, TestOperators {
   func testEqual() {
+   XCTAssert(self.vectorPoint == self.vectorPoint)
    XCTAssert(self.vectorPoint == self.vectorSize)
    XCTAssert(self.vectorPoint == self.vectorVector)
   }
   func testNotEqual() {
+    XCTAssertFalse(self.vectorPoint != self.vectorPoint)
     XCTAssertFalse(self.vectorPoint != self.vectorSize)
     XCTAssertFalse(self.vectorPoint != self.vectorVector)
     
   }
   func testLessThanOrEqual() {
+    XCTAssert(self.vectorPoint <= self.vectorPoint)
     XCTAssert(self.vectorPoint <= self.vectorSize)
     XCTAssert(self.vectorPoint <= self.vectorVector)
     self.vectorPoint.x = 0.0
@@ -33,15 +36,18 @@ class TestsCGPointOperators : SuperTestsOperators, TestOperators {
   func testLessThan() {
     self.vectorPoint.x = 0.0
     self.vectorPoint.y = 0.0
+    XCTAssertFalse(self.vectorPoint < self.vectorPoint)
     XCTAssert(self.vectorPoint < self.vectorSize)
     XCTAssert(self.vectorPoint < self.vectorVector)
     
   }
   func testMoreThanOrEqual() {
+    XCTAssert(self.vectorPoint >= self.vectorPoint)
     XCTAssert(self.vectorPoint >= self.vectorSize)
     XCTAssert(self.vectorPoint >= self.vectorVector)
     self.vectorPoint.x += 1.0
     self.vectorPoint.y += 1.0
+    XCTAssert(self.vectorPoint >= self.vectorPoint)
     XCTAssert(self.vectorPoint >= self.vectorSize)
     XCTAssert(self.vectorPoint >= self.vectorVector)
     
@@ -49,18 +55,23 @@ class TestsCGPointOperators : SuperTestsOperators, TestOperators {
   func testMoreThan() {
     self.vectorPoint.x += 1.0
     self.vectorPoint.y += 1.0
+    XCTAssert(self.vectorPoint >= self.vectorPoint)
     XCTAssert(self.vectorPoint >= self.vectorSize)
     XCTAssert(self.vectorPoint >= self.vectorVector)
     
   }
   func testSubtraction() {
-    self.vectorPoint = self.vectorPoint - self.vectorSize
+    self.vectorPoint = self.vectorPoint - self.vectorPoint
     XCTAssertEqual(self.vectorPoint.x, CGFloat(self.doubleValue-self.doubleValue))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(self.doubleValue-self.doubleValue))
-    
-    self.vectorPoint = self.vectorPoint - self.vectorVector
+
+    self.vectorPoint = self.vectorPoint - self.vectorSize
     XCTAssertEqual(self.vectorPoint.x, CGFloat(-self.doubleValue))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(-self.doubleValue))
+    
+    self.vectorPoint = self.vectorPoint - self.vectorVector
+    XCTAssertEqual(self.vectorPoint.x, CGFloat(-self.doubleValue*2))
+    XCTAssertEqual(self.vectorPoint.y, CGFloat(-self.doubleValue*2))
 
   }
   func testSubtractionAssignment() {

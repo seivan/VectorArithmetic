@@ -24,13 +24,34 @@ protocol VectorArithmetic : VectorOperatable {
   
 }
 
+//Since these structs already have != operator for themselves, but not against each we can't use a generic constraint
+
+@infix func != (lhs: CGVector , rhs: CGSize) -> Bool {
+  return (lhs == rhs) == false
+}
+@infix func != (lhs: CGVector , rhs: CGPoint) -> Bool {
+  return (lhs == rhs) == false
+}
+@infix func != (lhs: CGSize , rhs: CGVector) -> Bool {
+  return (lhs == rhs) == false
+}
+@infix func != (lhs: CGSize , rhs: CGPoint) -> Bool {
+  return (lhs == rhs) == false
+}
+@infix func != (lhs: CGPoint , rhs: CGVector) -> Bool {
+  return (lhs == rhs) == false
+}
+@infix func != (lhs: CGPoint , rhs: CGSize) -> Bool {
+  return (lhs == rhs) == false
+}
 
 @infix func == <T:VectorOperatable, U:VectorOperatable> (lhs:T,rhs:U) -> Bool {
     return (lhs.horizontal == rhs.horizontal && lhs.vertical == rhs.vertical)
 }
-@infix func != <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
-  return (lhs == rhs) == false
-}
+//Gives ambigious operator since the struct already does compare to its own type
+//@infix func != <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
+//  return (lhs == rhs) == false
+//}
 @infix func <= <T:VectorOperatable, U:VectorOperatable>(lhs:T, rhs:U) -> Bool {
     return (lhs.horizontal <=  rhs.horizontal && lhs.vertical <= rhs.vertical)
 }
