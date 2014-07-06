@@ -12,59 +12,70 @@ import CoreGraphics
 class TestsInitializerVectorOperatable : SuperTestsVectorOperatable {
 
   
-  func testCGPoint() {
+  func testCGPointCustomInit() {
     self.vectorPoint = CGPoint(horizontal: self.doubleValue, vertical: self.doubleValue)
-    var x = self.vectorPoint!
+    self.vectorGeneric = self.vectorPoint!
+    
+    XCTAssertEqual(self.vectorPoint!.x, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorPoint!.y, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorGeneric!.horizontal, self.doubleValue)
+    XCTAssertEqual(self.vectorGeneric!.vertical, self.doubleValue)
+    
+  }
+  
+  func testCGPointOverloadInit() {
+    self.vectorPoint = CGPoint(x: self.doubleValue, y: self.doubleValue)
+    self.vectorGeneric = self.vectorPoint!
 
     XCTAssertEqual(self.vectorPoint!.x, CGFloat(self.doubleValue))
     XCTAssertEqual(self.vectorPoint!.y, CGFloat(self.doubleValue))
-    XCTAssertEqual(self.vectorPoint!.horizontal, self.doubleValue)
-    XCTAssertEqual(self.vectorPoint!.vertical, self.doubleValue)
-    
-    #if !(arch(x86_64) || arch(arm64))
-      let newP = CGPoint(horizontal: expected, vertical: expected)
-      XCTAssertEqual(newP.x, CGFloat(self.expected))
-      XCTAssertEqual(newP.y, CGFloat(self.expected))
-    #endif
+    XCTAssertEqual(self.vectorGeneric!.horizontal, self.doubleValue)
+    XCTAssertEqual(self.vectorGeneric!.vertical, self.doubleValue)
 
   }
-  
-  func testCGSize() {
-    var p = CGPoint(horizontal: self.expected, vertical: self.expected)
-    p.horizontal = self.expected*2
-    p.vertical = self.expected*2
+
+  func testCGSizeCustomInit() {
+    self.vectorSize = CGSize(horizontal: self.doubleValue, vertical: self.doubleValue)
+    self.vectorGeneric = self.vectorSize!
     
-    
-    XCTAssertEqual(p.x, CGFloat(self.expected*2))
-    XCTAssertEqual(p.y, CGFloat(self.expected*2))
-    XCTAssertEqual(p.vertical, self.expected*2)
-    XCTAssertEqual(p.horizontal, self.expected*2)
-    
-    #if !(arch(x86_64) || arch(arm64))
-      p = CGPoint(horizontal: self.expected, vertical: self.expected)
-      p.horizontal = self.expected*2
-      p.vertical = self.expected*2
-      XCTAssertEqual(p.x, CGFloat(self.expected*2))
-      XCTAssertEqual(p.y, CGFloat(self.expected*2))
-      XCTAssertEqual(p.vertical, self.expected*2)
-      XCTAssertEqual(p.horizontal, self.expected*2)
-    #endif
+    XCTAssertEqual(self.vectorSize!.width, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorSize!.height, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorGeneric!.horizontal, self.doubleValue)
+    XCTAssertEqual(self.vectorGeneric!.vertical, self.doubleValue)
     
   }
   
-  func testCGVector() {
-    let p = CGPoint(horizontal: self.expected, vertical: self.expected)
-    XCTAssertEqual(p.x, CGFloat(self.expected))
-    XCTAssertEqual(p.y, CGFloat(self.expected))
+  func testCGSizeOverloadInit() {
+    self.vectorSize = CGSize(width: self.doubleValue, height: self.doubleValue)
+    self.vectorGeneric = self.vectorSize!
     
-    #if !(arch(x86_64) || arch(arm64))
-      let newP = CGPoint(horizontal: expected, vertical: expected)
-      XCTAssertEqual(newP.x, CGFloat(self.expected))
-      XCTAssertEqual(newP.y, CGFloat(self.expected))
-    #endif
+    XCTAssertEqual(self.vectorSize!.width, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorSize!.height, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorGeneric!.horizontal, self.doubleValue)
+    XCTAssertEqual(self.vectorGeneric!.vertical, self.doubleValue)
     
   }
-
+  func testCGVectorCustomInit() {
+    self.vectorVector = CGVector(horizontal: self.doubleValue, vertical: self.doubleValue)
+    self.vectorGeneric = self.vectorVector!
+    
+    XCTAssertEqual(self.vectorVector!.dx, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorVector!.dy, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorGeneric!.horizontal, self.doubleValue)
+    XCTAssertEqual(self.vectorGeneric!.vertical, self.doubleValue)
+    
+  }
+  
+  func testCGVectorOverloadInit() {
+    self.vectorVector = CGVector(self.doubleValue,self.doubleValue)
+    self.vectorGeneric = self.vectorVector!
+    
+    XCTAssertEqual(self.vectorVector!.dx, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorVector!.dy, CGFloat(self.doubleValue))
+    XCTAssertEqual(self.vectorGeneric!.horizontal, self.doubleValue)
+    XCTAssertEqual(self.vectorGeneric!.vertical, self.doubleValue)
+    
+  }
 
 
 }

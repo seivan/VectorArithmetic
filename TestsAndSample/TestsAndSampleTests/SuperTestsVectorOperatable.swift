@@ -14,5 +14,6 @@ class SuperTestsVectorOperatable: XCTestCase {
   var vectorSize:CGSize?
   var vectorVector:CGVector?
   let doubleValue:Double = Double(2.0)
+  var vectorGeneric:VectorOperatable?
 
 }
