@@ -75,84 +75,110 @@ class TestsCGPointOperators : SuperTestsOperators, TestOperators {
 
   }
   func testSubtractionAssignment() {
-    self.vectorPoint -= self.vectorSize
+    self.vectorPoint -= self.vectorPoint
     XCTAssertEqual(self.vectorPoint.x, CGFloat(self.doubleValue-self.doubleValue))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(self.doubleValue-self.doubleValue))
-    
-    self.vectorPoint -= self.vectorVector
+
+    self.vectorPoint -= self.vectorSize
     XCTAssertEqual(self.vectorPoint.x, CGFloat(-self.doubleValue))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(-self.doubleValue))
     
+    self.vectorPoint -= self.vectorVector
+    XCTAssertEqual(self.vectorPoint.x, CGFloat(-self.doubleValue*2))
+    XCTAssertEqual(self.vectorPoint.y, CGFloat(-self.doubleValue*2))
+    
   }
   func testAddition() {
-    self.vectorPoint = self.vectorPoint + self.vectorSize
+    self.vectorPoint = self.vectorPoint + self.vectorPoint
     XCTAssertEqual(self.vectorPoint.x, CGFloat(self.doubleValue*2))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(self.doubleValue*2))
-    
-    self.vectorPoint = self.vectorPoint + self.vectorVector
+
+    self.vectorPoint = self.vectorPoint + self.vectorSize
     XCTAssertEqual(self.vectorPoint.x, CGFloat(self.doubleValue*3))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(self.doubleValue*3))
+    
+    self.vectorPoint = self.vectorPoint + self.vectorVector
+    XCTAssertEqual(self.vectorPoint.x, CGFloat(self.doubleValue*4))
+    XCTAssertEqual(self.vectorPoint.y, CGFloat(self.doubleValue*4))
 
   }
   func testAdditionAssignment() {
-    self.vectorPoint += self.vectorSize
+    self.vectorPoint += self.vectorPoint
     XCTAssertEqual(self.vectorPoint.x, CGFloat(self.doubleValue*2))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(self.doubleValue*2))
+
     
-    self.vectorPoint += self.vectorVector
+    self.vectorPoint += self.vectorSize
     XCTAssertEqual(self.vectorPoint.x, CGFloat(self.doubleValue*3))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(self.doubleValue*3))
+    
+    self.vectorPoint += self.vectorVector
+    XCTAssertEqual(self.vectorPoint.x, CGFloat(self.doubleValue*4))
+    XCTAssertEqual(self.vectorPoint.y, CGFloat(self.doubleValue*4))
 
   }
   func testMultiplication() {
-    self.vectorPoint = self.vectorPoint * self.vectorSize
+    self.vectorPoint = self.vectorPoint * self.vectorPoint
     XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 2)))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 2)))
-    
-    self.vectorPoint = self.vectorPoint * self.vectorVector
+
+    self.vectorPoint = self.vectorPoint * self.vectorSize
     XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 3)))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 3)))
+    
+    self.vectorPoint = self.vectorPoint * self.vectorVector
+    XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 4)))
+    XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 4)))
 
     
   }
   func testMultiplicationAssignment() {
-    self.vectorPoint *= self.vectorSize
+    self.vectorPoint *= self.vectorPoint
     XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 2)))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 2)))
-    
-    self.vectorPoint *= self.vectorVector
+
+    self.vectorPoint *= self.vectorSize
     XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 3)))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 3)))
+    
+    self.vectorPoint *= self.vectorVector
+    XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 4)))
+    XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 4)))
 
   }
   func testDivision() {
-    self.vectorPoint = self.vectorPoint / self.vectorSize
+    self.vectorPoint = self.vectorPoint / self.vectorPoint
     XCTAssertEqual(self.vectorPoint.x, 1)
     XCTAssertEqual(self.vectorPoint.y, 1)
+
     
-    self.vectorPoint = self.vectorPoint / self.vectorVector
+    self.vectorPoint = self.vectorPoint / self.vectorSize
     XCTAssertEqual(self.vectorPoint.x, 0.5)
     XCTAssertEqual(self.vectorPoint.y, 0.5)
+    
+    self.vectorPoint = self.vectorPoint / self.vectorVector
+    XCTAssertEqual(self.vectorPoint.x, 0.25)
+    XCTAssertEqual(self.vectorPoint.y, 0.25)
 
   }
   func testDivisionAssignment() {
-    self.vectorPoint /= self.vectorSize
+    self.vectorPoint /= self.vectorPoint
     XCTAssertEqual(self.vectorPoint.x, 1)
     XCTAssertEqual(self.vectorPoint.y, 1)
-    
-    self.vectorPoint /= self.vectorVector
+
+    self.vectorPoint /= self.vectorSize
     XCTAssertEqual(self.vectorPoint.x, 0.5)
     XCTAssertEqual(self.vectorPoint.y, 0.5)
+    
+    self.vectorPoint /= self.vectorVector
+    XCTAssertEqual(self.vectorPoint.x, 0.25)
+    XCTAssertEqual(self.vectorPoint.y, 0.25)
 
   }
   func testMultiplicationScalar() {
     self.vectorPoint = self.vectorPoint * 2
     XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 2)))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 2)))
-    
-    self.vectorPoint = self.vectorPoint * 2
-    XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 3)))
-    XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 3)))
 
   }
   func testMultiplicationScalarAssignment() {
@@ -160,9 +186,6 @@ class TestsCGPointOperators : SuperTestsOperators, TestOperators {
     XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 2)))
     XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 2)))
     
-    self.vectorPoint *= 2
-    XCTAssertEqual(self.vectorPoint.x, CGFloat(pow(self.doubleValue, 3)))
-    XCTAssertEqual(self.vectorPoint.y, CGFloat(pow(self.doubleValue, 3)))
     
   }
   func testDivisionScalar() {
@@ -170,9 +193,6 @@ class TestsCGPointOperators : SuperTestsOperators, TestOperators {
     XCTAssertEqual(self.vectorPoint.x, 1)
     XCTAssertEqual(self.vectorPoint.y, 1)
     
-    self.vectorPoint = self.vectorPoint / 2
-    XCTAssertEqual(self.vectorPoint.x, 0.5)
-    XCTAssertEqual(self.vectorPoint.y, 0.5)
 
   }
   func testDivisionScalarAssignment() {
@@ -180,9 +200,6 @@ class TestsCGPointOperators : SuperTestsOperators, TestOperators {
     XCTAssertEqual(self.vectorPoint.x, 1)
     XCTAssertEqual(self.vectorPoint.y, 1)
     
-    self.vectorPoint /= 2
-    XCTAssertEqual(self.vectorPoint.x, 0.5)
-    XCTAssertEqual(self.vectorPoint.y, 0.5)
  
   }
 
