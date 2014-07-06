@@ -31,13 +31,25 @@ protocol TestOperators {
 
 }
 
+protocol TestMathFunctions {
+  func testAngleInRadians()
+  func testMagnitude()
+  func testLengthSquared()
+  func testLength()
+  func testDotProduct()
+  func testDistanceTo()
+  func testReversed()
+  func testNormalized()
+  func testLimited()
+  func testScaled()
+  func testAngled()
+}
+
 class SuperTestsOperators: XCTestCase {
   let doubleValue:Double = Double(2.0)
   var vectorPoint:CGPoint = CGPoint(x: 2.0, y: 2.0)
   var vectorSize:CGSize = CGSize(width: 2.0, height: 2.0)
   var vectorVector:CGVector = CGVector(2.0, 2.0)
   var vectorGeneric:VectorOperatable?
-
-
 
 }
