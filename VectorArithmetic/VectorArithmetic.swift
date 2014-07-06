@@ -56,7 +56,7 @@ protocol VectorArithmetic : VectorOperatable {
     return (lhs.horizontal <=  rhs.horizontal && lhs.vertical <= rhs.vertical)
 }
 @infix func < <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
-  return (lhs.horizontal <  rhs.horizontal && lhs.vertical < rhs.vertical)
+  return (lhs.horizontal <  rhs.horizontal || lhs.vertical < rhs.vertical)
 }
 @infix func >= <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
     return (lhs.horizontal >= rhs.horizontal && lhs.vertical >= rhs.vertical)

@@ -55,9 +55,9 @@ class TestsCGPointOperators : SuperTestsOperators, TestOperators {
   func testMoreThan() {
     self.vectorPoint.x += 1.0
     self.vectorPoint.y += 1.0
-    XCTAssert(self.vectorPoint >= self.vectorPoint)
-    XCTAssert(self.vectorPoint >= self.vectorSize)
-    XCTAssert(self.vectorPoint >= self.vectorVector)
+    XCTAssert(self.vectorPoint > self.vectorPoint)
+    XCTAssert(self.vectorPoint > self.vectorSize)
+    XCTAssert(self.vectorPoint > self.vectorVector)
     
   }
   func testSubtraction() {

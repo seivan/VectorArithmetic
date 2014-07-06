@@ -12,18 +12,22 @@ import XCTest
 class TestsCGSizeOperators : SuperTestsOperators, TestOperators {
   func testEqual() {
     XCTAssert(self.vectorSize == self.vectorSize)
+    XCTAssert(self.vectorSize == self.vectorPoint)
     XCTAssert(self.vectorSize == self.vectorVector)
   }
   func testNotEqual() {
     XCTAssertFalse(self.vectorSize != self.vectorSize)
+    XCTAssertFalse(self.vectorSize != self.vectorPoint)
     XCTAssertFalse(self.vectorSize != self.vectorVector)
     
   }
   func testLessThanOrEqual() {
+    XCTAssert(self.vectorSize <= self.vectorSize)
     XCTAssert(self.vectorSize <= self.vectorPoint)
     XCTAssert(self.vectorSize <= self.vectorVector)
     self.vectorSize.width = 0.0
     self.vectorSize.height = 0.0
+    XCTAssert(self.vectorSize <= self.vectorSize)
     XCTAssert(self.vectorSize <= self.vectorPoint)
     XCTAssert(self.vectorSize <= self.vectorVector)
     
@@ -33,15 +37,18 @@ class TestsCGSizeOperators : SuperTestsOperators, TestOperators {
   func testLessThan() {
     self.vectorSize.width = 0.0
     self.vectorSize.height = 0.0
+    XCTAssertFalse(self.vectorSize < self.vectorSize)
     XCTAssert(self.vectorSize < self.vectorPoint)
     XCTAssert(self.vectorSize < self.vectorVector)
     
   }
   func testMoreThanOrEqual() {
+    XCTAssert(self.vectorSize >= self.vectorSize)
     XCTAssert(self.vectorSize >= self.vectorPoint)
     XCTAssert(self.vectorSize >= self.vectorVector)
     self.vectorSize.width += 1.0
     self.vectorSize.height += 1.0
+    XCTAssert(self.vectorSize >= self.vectorSize)
     XCTAssert(self.vectorSize >= self.vectorPoint)
     XCTAssert(self.vectorSize >= self.vectorVector)
     
@@ -49,8 +56,9 @@ class TestsCGSizeOperators : SuperTestsOperators, TestOperators {
   func testMoreThan() {
     self.vectorSize.width += 1.0
     self.vectorSize.height += 1.0
-    XCTAssert(self.vectorSize >= self.vectorPoint)
-    XCTAssert(self.vectorSize >= self.vectorVector)
+    XCTAssert(self.vectorSize >= self.vectorSize)
+    XCTAssert(self.vectorSize > self.vectorPoint)
+    XCTAssert(self.vectorSize > self.vectorVector)
     
   }
   func testSubtraction() {
