@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		222EB3BE1960DA8D00C95A95 /* VectorArithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EB3BC1960DA8D00C95A95 /* VectorArithmetic.swift */; };
-		222EB3C11960E04E00C95A95 /* TestsVectorOperatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EB3C01960E04E00C95A95 /* TestsVectorOperatable.swift */; };
+		222EB3C11960E04E00C95A95 /* TestsInitializerVectorOperatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EB3C01960E04E00C95A95 /* TestsInitializerVectorOperatable.swift */; };
 		222EB3C41960E17D00C95A95 /* VectorArithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EB3BC1960DA8D00C95A95 /* VectorArithmetic.swift */; };
 		2283D06B196762AF00DD9618 /* ScalarArithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283D06A196762AF00DD9618 /* ScalarArithmetic.swift */; };
+		2283D06F1968D6CC00DD9618 /* SuperTestsVectorOperatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283D06E1968D6CC00DD9618 /* SuperTestsVectorOperatable.swift */; };
 		22AFC47F195F9D02003572F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AFC47E195F9D02003572F3 /* AppDelegate.swift */; };
 		22AFC481195F9D02003572F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AFC480195F9D02003572F3 /* Images.xcassets */; };
 /* End PBXBuildFile section */
@@ -34,8 +35,9 @@
 
 /* Begin PBXFileReference section */
 		222EB3BC1960DA8D00C95A95 /* VectorArithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorArithmetic.swift; sourceTree = "<group>"; };
-		222EB3C01960E04E00C95A95 /* TestsVectorOperatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsVectorOperatable.swift; sourceTree = "<group>"; };
+		222EB3C01960E04E00C95A95 /* TestsInitializerVectorOperatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsInitializerVectorOperatable.swift; sourceTree = "<group>"; };
 		2283D06A196762AF00DD9618 /* ScalarArithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalarArithmetic.swift; sourceTree = "<group>"; };
+		2283D06E1968D6CC00DD9618 /* SuperTestsVectorOperatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperTestsVectorOperatable.swift; sourceTree = "<group>"; };
 		22AFC479195F9D02003572F3 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AFC47D195F9D02003572F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22AFC47E195F9D02003572F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,7 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				22AFC48A195F9D02003572F3 /* Supporting Files */,
-				222EB3C01960E04E00C95A95 /* TestsVectorOperatable.swift */,
+				222EB3C01960E04E00C95A95 /* TestsInitializerVectorOperatable.swift */,
+				2283D06E1968D6CC00DD9618 /* SuperTestsVectorOperatable.swift */,
 			);
 			path = TestsAndSampleTests;
 			sourceTree = "<group>";
@@ -244,7 +247,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				222EB3C41960E17D00C95A95 /* VectorArithmetic.swift in Sources */,
-				222EB3C11960E04E00C95A95 /* TestsVectorOperatable.swift in Sources */,
+				2283D06F1968D6CC00DD9618 /* SuperTestsVectorOperatable.swift in Sources */,
+				222EB3C11960E04E00C95A95 /* TestsInitializerVectorOperatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

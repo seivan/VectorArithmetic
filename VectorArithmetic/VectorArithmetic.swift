@@ -15,21 +15,12 @@ protocol VectorArithmetic : VectorOperatable {
   var length:Double {get}
   func dotProduct <T : VectorArithmetic>(vector:T) -> Double
   func distanceTo <T : VectorArithmetic>(vector:T) -> Double
-  
   var reversed:Self {get}
-  mutating func reverse()
-
   var normalized:Self {get}
-  mutating func normalize()
-  
   func limited(scalar:Double) -> Self
-  mutating func limit(scalar:Double)
-  
   func scaled(scalar:Double) -> Self
-  mutating func scale(scalar:Double)
-  
   func angled(scalar:Double) -> Self
-  mutating func angle(scalar:Double)
+
   
 }
 
@@ -159,7 +150,7 @@ struct InternalVectorArithmetic {
   static func vectorWithAngle <T:VectorArithmetic>(vector:T, scalar:Double) -> T {
     let length = vector.length
     return T(horizontal: cos(scalar) * length, vertical: sin(scalar) * length)
-    }
+  }
 }
 
 
@@ -201,15 +192,11 @@ extension CGPoint: VectorArithmetic  {
   func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
   func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
   var reversed:CGPoint { return InternalVectorArithmetic.reversed(self) }
-  mutating func reverse() { self = self.reversed }
   var normalized:CGPoint { return InternalVectorArithmetic.normalized(self) }
-  mutating func normalize() { self = self.normalized }
   func limited(scalar:Double) -> CGPoint { return InternalVectorArithmetic.limit(self, scalar: scalar) }
-  mutating func limit(scalar:Double) { self  = self.limited(scalar); }
   func scaled(scalar:Double) -> CGPoint { return InternalVectorArithmetic.scale(self, scalar: scalar) }
-  mutating func scale(scalar:Double) { self = self.scaled(scalar) }
   func angled(scalar:Double) -> CGPoint { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
-  mutating func angle(scalar:Double) { self = self.angled(scalar); }
+
   
 }
 
@@ -252,15 +239,10 @@ extension CGSize: VectorArithmetic   {
   func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
   func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
   var reversed:CGSize { return InternalVectorArithmetic.reversed(self) }
-  mutating func reverse() { self = self.reversed }
   var normalized:CGSize { return InternalVectorArithmetic.normalized(self) }
-  mutating func normalize() { self = self.normalized }
   func limited(scalar:Double) -> CGSize { return InternalVectorArithmetic.limit(self, scalar: scalar) }
-  mutating func limit(scalar:Double) { self  = self.limited(scalar); }
   func scaled(scalar:Double) -> CGSize { return InternalVectorArithmetic.scale(self, scalar: scalar) }
-  mutating func scale(scalar:Double) { self = self.scaled(scalar) }
   func angled(scalar:Double) -> CGSize { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
-  mutating func angle(scalar:Double) { self = self.angled(scalar) }
   
   
 }
@@ -306,14 +288,9 @@ extension CGVector: VectorArithmetic   {
   func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
   func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
   var reversed:CGVector { return InternalVectorArithmetic.reversed(self) }
-  mutating func reverse() { self = self.reversed }
   var normalized:CGVector { return InternalVectorArithmetic.normalized(self) }
-  mutating func normalize() { self = self.normalized }
   func limited(scalar:Double) -> CGVector { return InternalVectorArithmetic.limit(self, scalar: scalar) }
-  mutating func limit(scalar:Double) { self  = self.limited(scalar); }
   func scaled(scalar:Double) -> CGVector { return InternalVectorArithmetic.scale(self, scalar: scalar) }
-  mutating func scale(scalar:Double) { self = self.scaled(scalar) }
   func angled(scalar:Double) -> CGVector { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
-  mutating func angle(scalar:Double) { self = self.angled(scalar) }
 
 }
