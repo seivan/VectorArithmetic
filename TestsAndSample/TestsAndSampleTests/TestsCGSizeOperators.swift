@@ -56,12 +56,13 @@ class TestsCGSizeOperators : SuperTestsOperators, TestOperators {
   func testMoreThan() {
     self.vectorSize.width += 1.0
     self.vectorSize.height += 1.0
-    XCTAssert(self.vectorSize >= self.vectorSize)
+    XCTAssertFalse(self.vectorSize > self.vectorSize)
     XCTAssert(self.vectorSize > self.vectorPoint)
     XCTAssert(self.vectorSize > self.vectorVector)
     
   }
   func testSubtraction() {
+    
     self.vectorSize = self.vectorSize - self.vectorPoint
     XCTAssertEqual(self.vectorSize.width, CGFloat(self.doubleValue-self.doubleValue))
     XCTAssertEqual(self.vectorSize.height, CGFloat(self.doubleValue-self.doubleValue))
