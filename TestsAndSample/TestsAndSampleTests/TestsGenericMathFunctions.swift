@@ -8,7 +8,8 @@
 
 import XCTest
 import CoreGraphics
-class TestsMathFunctions<T:VectorArithmetic>:TestMathFunctions {
+
+class TestsGenericMathFunctions<T:VectorArithmetic>:TestMathFunctions {
   let vector:T = T(horizontal: 2, vertical: 2)
   
   func testAngleInRadians() {

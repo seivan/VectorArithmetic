@@ -14,11 +14,11 @@
 		223B4FFF1969AE1700318C89 /* SuperTestsOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B4FFE1969AE1700318C89 /* SuperTestsOperators.swift */; };
 		223B50011969C4AB00318C89 /* TestsCGSizeOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B50001969C4AB00318C89 /* TestsCGSizeOperators.swift */; };
 		223B50031969F4BD00318C89 /* TestsCGVectorOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B50021969F4BD00318C89 /* TestsCGVectorOperators.swift */; };
-		223B50051969FCBB00318C89 /* TestsCGPointMathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B50041969FCBB00318C89 /* TestsCGPointMathFunctions.swift */; };
+		223B50051969FCBB00318C89 /* SuperTestsMathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223B50041969FCBB00318C89 /* SuperTestsMathFunctions.swift */; };
 		2283D06B196762AF00DD9618 /* ScalarArithmetic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283D06A196762AF00DD9618 /* ScalarArithmetic.swift */; };
 		22AFC47F195F9D02003572F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AFC47E195F9D02003572F3 /* AppDelegate.swift */; };
 		22AFC481195F9D02003572F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22AFC480195F9D02003572F3 /* Images.xcassets */; };
-		22C42919196C3AF900EE17B6 /* TestsCGVectorMathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42918196C3AF900EE17B6 /* TestsCGVectorMathFunctions.swift */; };
+		22C42919196C3AF900EE17B6 /* TestsGenericMathFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C42918196C3AF900EE17B6 /* TestsGenericMathFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		223B4FFE1969AE1700318C89 /* SuperTestsOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperTestsOperators.swift; sourceTree = "<group>"; };
 		223B50001969C4AB00318C89 /* TestsCGSizeOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsCGSizeOperators.swift; sourceTree = "<group>"; };
 		223B50021969F4BD00318C89 /* TestsCGVectorOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsCGVectorOperators.swift; sourceTree = "<group>"; };
-		223B50041969FCBB00318C89 /* TestsCGPointMathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsCGPointMathFunctions.swift; sourceTree = "<group>"; };
+		223B50041969FCBB00318C89 /* SuperTestsMathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperTestsMathFunctions.swift; sourceTree = "<group>"; };
 		2283D06A196762AF00DD9618 /* ScalarArithmetic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScalarArithmetic.swift; sourceTree = "<group>"; };
 		22AFC479195F9D02003572F3 /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AFC47D195F9D02003572F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		22AFC480195F9D02003572F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22AFC486195F9D02003572F3 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22AFC48B195F9D02003572F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22C42918196C3AF900EE17B6 /* TestsCGVectorMathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsCGVectorMathFunctions.swift; sourceTree = "<group>"; };
+		22C42918196C3AF900EE17B6 /* TestsGenericMathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsGenericMathFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,12 +135,12 @@
 			children = (
 				22AFC48A195F9D02003572F3 /* Supporting Files */,
 				222EB3C01960E04E00C95A95 /* TestsInitializerVectorOperatable.swift */,
+				223B4FFE1969AE1700318C89 /* SuperTestsOperators.swift */,
 				223B4FFC1969A7BB00318C89 /* TestsCGPointOperators.swift */,
 				223B50001969C4AB00318C89 /* TestsCGSizeOperators.swift */,
 				223B50021969F4BD00318C89 /* TestsCGVectorOperators.swift */,
-				223B4FFE1969AE1700318C89 /* SuperTestsOperators.swift */,
-				223B50041969FCBB00318C89 /* TestsCGPointMathFunctions.swift */,
-				22C42918196C3AF900EE17B6 /* TestsCGVectorMathFunctions.swift */,
+				223B50041969FCBB00318C89 /* SuperTestsMathFunctions.swift */,
+				22C42918196C3AF900EE17B6 /* TestsGenericMathFunctions.swift */,
 			);
 			path = TestsAndSampleTests;
 			sourceTree = "<group>";
@@ -264,8 +264,8 @@
 				223B4FFF1969AE1700318C89 /* SuperTestsOperators.swift in Sources */,
 				222EB3C41960E17D00C95A95 /* VectorArithmetic.swift in Sources */,
 				223B50031969F4BD00318C89 /* TestsCGVectorOperators.swift in Sources */,
-				223B50051969FCBB00318C89 /* TestsCGPointMathFunctions.swift in Sources */,
-				22C42919196C3AF900EE17B6 /* TestsCGVectorMathFunctions.swift in Sources */,
+				223B50051969FCBB00318C89 /* SuperTestsMathFunctions.swift in Sources */,
+				22C42919196C3AF900EE17B6 /* TestsGenericMathFunctions.swift in Sources */,
 				222EB3C11960E04E00C95A95 /* TestsInitializerVectorOperatable.swift in Sources */,
 				223B50011969C4AB00318C89 /* TestsCGSizeOperators.swift in Sources */,
 				223B4FFD1969A7BB00318C89 /* TestsCGPointOperators.swift in Sources */,

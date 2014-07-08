@@ -279,8 +279,8 @@ extension CGVector: VectorArithmetic   {
   }
   
   var horizontal:Double {
-    get { return Double(self.dy)      }
-    set { self.dy = CGFloat(newValue) }
+    get { return Double(self.dx)      }
+    set { self.dx = CGFloat(newValue) }
   }
   var vertical:Double {
     get {return Double(self.dy)       }
