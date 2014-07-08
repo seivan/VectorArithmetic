@@ -34,8 +34,8 @@ protocol TestOperators {
 protocol TestMathFunctions {
   func testAngleInRadians()
   func testMagnitude()
-  func testLengthSquared()
   func testLength()
+  func testLengthSquared()
   func testDotProduct()
   func testDistanceTo()
   func testReversed()
@@ -51,5 +51,6 @@ class SuperTestsOperators: XCTestCase {
   var vectorSize:CGSize = CGSize(width: 2.0, height: 2.0)
   var vectorVector:CGVector = CGVector(2.0, 2.0)
   var vectorGeneric:VectorOperatable?
+  
 
 }

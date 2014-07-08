@@ -11,8 +11,8 @@ protocol VectorArithmetic : VectorOperatable {
   
   var angleInRadians:Double {get}
   var magnitude:Double {get}
-  var lengthSquared:Double {get}
   var length:Double {get}
+  var lengthSquared:Double {get}
   func dotProduct <T : VectorArithmetic>(vector:T) -> Double
   func distanceTo <T : VectorArithmetic>(vector:T) -> Double
   var reversed:Self {get}
@@ -164,10 +164,6 @@ struct InternalVectorArithmetic {
   }
 
   
-  static func scale <T : VectorArithmetic>(vector :T, scalar:Double) -> T {
-    return vector.normalized * scalar
-  }
-  
   static func vectorWithAngle <T:VectorArithmetic>(vector:T, scalar:Double) -> T {
     let length = vector.length
     return T(horizontal: cos(scalar) * length, vertical: sin(scalar) * length)
@@ -215,7 +211,7 @@ extension CGPoint: VectorArithmetic  {
   var reversed:CGPoint { return InternalVectorArithmetic.reversed(self) }
   var normalized:CGPoint { return InternalVectorArithmetic.normalized(self) }
   func limited(scalar:Double) -> CGPoint { return InternalVectorArithmetic.limit(self, scalar: scalar) }
-  func scaled(scalar:Double) -> CGPoint { return InternalVectorArithmetic.scale(self, scalar: scalar) }
+  func scaled(scalar:Double) -> CGPoint { return InternalVectorArithmetic.limit(self, scalar: scalar) }
   func angled(scalar:Double) -> CGPoint { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
 
   
@@ -262,7 +258,7 @@ extension CGSize: VectorArithmetic   {
   var reversed:CGSize { return InternalVectorArithmetic.reversed(self) }
   var normalized:CGSize { return InternalVectorArithmetic.normalized(self) }
   func limited(scalar:Double) -> CGSize { return InternalVectorArithmetic.limit(self, scalar: scalar) }
-  func scaled(scalar:Double) -> CGSize { return InternalVectorArithmetic.scale(self, scalar: scalar) }
+  func scaled(scalar:Double) -> CGSize { return InternalVectorArithmetic.limit(self, scalar: scalar) }
   func angled(scalar:Double) -> CGSize { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
   
   
@@ -311,7 +307,7 @@ extension CGVector: VectorArithmetic   {
   var reversed:CGVector { return InternalVectorArithmetic.reversed(self) }
   var normalized:CGVector { return InternalVectorArithmetic.normalized(self) }
   func limited(scalar:Double) -> CGVector { return InternalVectorArithmetic.limit(self, scalar: scalar) }
-  func scaled(scalar:Double) -> CGVector { return InternalVectorArithmetic.scale(self, scalar: scalar) }
+  func scaled(scalar:Double) -> CGVector { return InternalVectorArithmetic.limit(self, scalar: scalar) }
   func angled(scalar:Double) -> CGVector { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
 
 }
