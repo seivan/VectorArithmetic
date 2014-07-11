@@ -308,6 +308,6 @@ extension CGVector: VectorArithmetic   {
   var normalized:CGVector { return InternalVectorArithmetic.normalized(self) }
   func limited(scalar:Double) -> CGVector { return InternalVectorArithmetic.limit(self, scalar: scalar) }
   func scaled(scalar:Double) -> CGVector { return InternalVectorArithmetic.limit(self, scalar: scalar) }
-  func angled(scalar:Double) -> CGVector { return InternalVectorArithmetic.vectorWithAngle(self, scalar: 23) }
+  func angled(scalar:Double) -> CGVector { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
 
 }
