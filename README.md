@@ -37,39 +37,32 @@ protocol VectorArithmetic : VectorOperatable {
 ```swift
 var point:CGPoint = ...
 let vector:CGVector = ...
-```
-##### Addition
-```swift
+//Add
 point + vector
 point += vector
-```
-##### Subtraction
-```swift
+
+//Subtract
 point - vector
 point -= vector
-```
-##### Multiplication
-```swift
+
+//Multiply
 point * vector
 point *= vector
-```
-##### Division
-```swift
+
+//Divide
 point / vector
 point /= vector
-```
-##### Multiplication with scalar
-```swift
+
+//Multiply with scalar
 point * 2.0
 point *= 2.0
-```
-##### Division with scalar
-```swift
+
+//Divide with scalar
 point / 2.0
 point /= 2.0
 ```
 
-##### Equatable Comparable
+##### Equatable and Comparable
 ```swift
 point == vector
 point != vector
