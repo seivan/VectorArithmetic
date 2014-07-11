@@ -121,7 +121,7 @@ struct InternalVectorArithmetic {
   }
   
   static func magnitude <T : VectorArithmetic>(vector:T) -> Double {
-    return sqrt(vector.dotProduct(vector))
+    return sqrt(vector.lengthSquared)
   }
   
   static func lengthSquared <T : VectorArithmetic>(vector:T) -> Double {
