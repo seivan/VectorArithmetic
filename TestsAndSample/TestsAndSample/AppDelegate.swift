@@ -47,6 +47,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     point <= vector
     point > vector
     point >= vector
+    
+    vector.angleInRadians
+    vector.magnitude
+    vector.length
+    vector.lengthSquared
+    vector.dotProduct(point)
+    vector.crossProduct(point)
+    vector.distanceTo(point)
+    vector.reversed
+    vector.normalized
+    vector.limited(20)
+    vector.scaled(20)
+    vector.angled(90)
+
 
     
     return true
