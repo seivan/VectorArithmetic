@@ -1,11 +1,14 @@
-# VectorArithmetic
+## VectorArithmetic
 
-## Overview
+### Overview
 Extending  ```CGPoint```, ```CGSize``` and ```CGVector``` with the protocols 
 ```VectorOperatable``` &  ```VectorArithmetic```
 
+### To get better interoperability between 32 and 64-bit numerical types use 
+* [ScalarArithmetic](https://github.com/seivan/ScalarArithmetic)
 
-## API
+### Usage
+
 ##### To enable Math, Equatable and Comparable operations conform to this protocol
 ```swift
 protocol VectorOperatable  {
@@ -32,7 +35,7 @@ protocol VectorArithmetic : VectorOperatable {
 }
 ``` 
 
-#### Operators
+##### Operators
 
 ```swift
 var point:CGPoint = ...
