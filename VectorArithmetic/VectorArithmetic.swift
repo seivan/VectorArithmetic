@@ -4,11 +4,9 @@ protocol VectorOperatable  {
   init(horizontal:Double,vertical:Double)
   var horizontal:Double { get set }
   var vertical:Double { get set }
-
 }
 
 protocol VectorArithmetic : VectorOperatable {
-  
   var angleInRadians:Double {get}
   var magnitude:Double {get}
   var length:Double {get}

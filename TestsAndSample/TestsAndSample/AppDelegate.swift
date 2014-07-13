@@ -19,10 +19,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     self.window!.backgroundColor = UIColor.whiteColor()
     self.window!.makeKeyAndVisible()
-    let x = 23.3
     
-    let p = CGPoint(x: x, y: x)
-    println(p)
+    var point:CGPoint = CGPoint(x: 2.0, y: 2.0)
+    let vector:CGVector = CGVector(horizontal: 2.0, vertical: 2.0)
+    
+    point + vector
+    point += vector
+
+    point - vector
+    point -= vector
+
+    point * vector
+    point *= vector
+
+    point / vector
+    point /= vector
+
+    point * 4.5
+    point *= 20.5
+
+    point / 2.0
+    point /= 2.0
+
+    point == vector
+    point != vector
+    point < vector
+    point <= vector
+    point > vector
+    point >= vector
+
+    
     return true
   }
 
