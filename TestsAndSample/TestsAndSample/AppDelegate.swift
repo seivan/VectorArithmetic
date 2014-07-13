@@ -21,26 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window!.makeKeyAndVisible()
     
     var point:CGPoint = CGPoint(x: 2.0, y: 2.0)
-    let vector:CGVector = CGVector(horizontal: 2.0, vertical: 2.0)
+    var vector:CGVector = CGVector(horizontal: 2.0, vertical: 2.0)
     
-    point + vector
+    point = point + vector
     point += vector
-
-    point - vector
+    
+    point = point - vector
     point -= vector
-
-    point * vector
+    
+    point = point * vector
     point *= vector
-
-    point / vector
+    
+    point = point / vector
     point /= vector
-
-    point * 4.5
-    point *= 20.5
-
-    point / 2.0
-    point /= 2.0
-
+    
+    vector = vector * 4.5
+    vector *= 20.5
+    
+    vector = vector / 2.0
+    vector /= 2.0
     point == vector
     point != vector
     point < vector

@@ -6,53 +6,14 @@ Extending  ```CGPoint```, ```CGSize``` and ```CGVector``` with the protocols
 
 Handles some of the Swift bugs related to architecture differences.
 
+Just want to point out that Apple themselves uses **CGPoint** throughout UIKit for **velocity** and other vectors. So remember that when you see ```myPoint + myOtherPoint * 2```
+
 
 ### Dependency
 >To get better interoperability between 32 and 64-bit numerical types use 
 * [ScalarArithmetic](https://github.com/seivan/ScalarArithmetic)
 
 ### Usage
-
-##### Operators
-
-```swift
-var vector = CGVector(20, 5.5)
-let point = CGPoint(x: 5, y: 5)
-
-//Add
-point + vector
-point += vector
-
-//Subtract
-point - vector
-point -= vector
-
-//Multiply
-point * vector
-point *= vector
-
-//Divide
-point / vector
-point /= vector
-
-//Multiply with scalar
-point * 2.0
-point *= 2.0
-
-//Divide with scalar
-point / 2.0
-point /= 2.0
-```
-
-##### Equatable and Comparable
-```swift
-point == vector
-point != vector
-point < vector
-point <= vector
-point > vector
-point >= vector
-```
 
 ##### Math Functions
 ```swift
@@ -72,6 +33,40 @@ vector.limited(20) // {dx 19.2841078560758, dy 5.30312966042085}
 vector.scaled(20) // synonym to limited()
 vector.angled(90) // {dx -9.29415287392715, dy 18.5436976451859}
 ``` 
+
+##### Operators
+```swift
+var point:CGPoint = CGPoint(x: 2.0, y: 2.0)
+var vector:CGVector = CGVector(horizontal: 2.0, vertical: 2.0)
+
+point = point + vector
+point += vector
+
+point = point - vector
+point -= vector
+
+point = point * vector
+point *= vector
+
+point = point / vector
+point /= vector
+
+vector = vector * 4.5
+vector *= 20.5
+
+vector = vector / 2.0
+vector /= 2.0
+```
+
+##### Equatable and Comparable
+```swift
+point == vector
+point != vector
+point < vector
+point <= vector
+point > vector
+point >= vector
+```
 
 
 ##### Generic initializer
@@ -95,8 +90,6 @@ boid.velocity > boid.position // True
 ```
 
 ### Extending
-
-#### To enable operator conform to the protocol ```VectorOperatable```
 
 ##### Equatable and Comparable
 ```swift

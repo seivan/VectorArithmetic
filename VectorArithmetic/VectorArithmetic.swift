@@ -63,6 +63,7 @@ protocol VectorArithmetic : VectorOperatable {
 @infix func > <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
     return (lhs <= rhs) == false
 }
+
 @infix func - <T:VectorOperatable, U:VectorOperatable>(lhs: T, rhs:U) -> T  {
   return T(horizontal: lhs.horizontal-rhs.horizontal, vertical: lhs.vertical-rhs.vertical)
 }
