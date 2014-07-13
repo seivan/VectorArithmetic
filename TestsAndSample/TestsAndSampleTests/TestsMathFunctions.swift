@@ -44,6 +44,11 @@ class TestsMathFunctions: XCTestCase,TestMathFunctions {
     self.testerCGSize.testDotProduct()
     self.testerCGVector.testDotProduct()
   }
+  func testCrossProduct() {
+    self.testerCGPoint.testCrossProduct()
+    self.testerCGSize.testCrossProduct()
+    self.testerCGVector.testCrossProduct()
+  }
   
   func testDistanceTo() {
     self.testerCGPoint.testDistanceTo()

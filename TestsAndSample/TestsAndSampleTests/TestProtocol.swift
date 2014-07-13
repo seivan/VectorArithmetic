@@ -37,6 +37,7 @@ protocol TestMathFunctions {
   func testLength()
   func testLengthSquared()
   func testDotProduct()
+  func testCrossProduct()
   func testDistanceTo()
   func testReversed()
   func testNormalized()

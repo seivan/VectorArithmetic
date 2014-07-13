@@ -12,6 +12,7 @@ protocol VectorArithmetic : VectorOperatable {
   var length:Double {get}
   var lengthSquared:Double {get}
   func dotProduct <T : VectorArithmetic>(vector:T) -> Double
+  func crossProduct <T : VectorArithmetic>(vector:T) -> Double
   func distanceTo <T : VectorArithmetic>(vector:T) -> Double
   var reversed:Self {get}
   var normalized:Self {get}
@@ -113,13 +114,14 @@ protocol VectorArithmetic : VectorOperatable {
 struct InternalVectorArithmetic {
     
   static func angleInRadians  <T : VectorArithmetic>(vector:T) -> Double {
-    let normalized = vector.normalized
-    let theta = atan2(normalized.vertical, normalized.horizontal)
+    let normalizedVector = self.normalized(vector)
+
+    let theta = atan2(normalizedVector.vertical, normalizedVector.horizontal)
     return theta + M_PI_2 * -1
   }
   
   static func magnitude <T : VectorArithmetic>(vector:T) -> Double {
-    return sqrt(vector.lengthSquared)
+    return sqrt(self.lengthSquared(vector))
   }
   
   static func lengthSquared <T : VectorArithmetic>(vector:T) -> Double {
@@ -134,22 +136,21 @@ struct InternalVectorArithmetic {
   static func dotProduct <T : VectorOperatable, U : VectorOperatable > (vector:T, otherVector:U) -> Double  {
     return (vector.horizontal*otherVector.horizontal) + (vector.vertical*otherVector.vertical)
   }
-  static func crossProduct <T : VectorOperatable, U : VectorOperatable > (vector:T, otherVector:U) -> Double  {
-    let deltaAngle = sin(angleInRadians(vector) - angleInRadians(otherVector))
-    return magnitude(vector) * magnitude(otherVector) * deltaAngle
+
+  static func crossProduct <T : VectorArithmetic, U : VectorArithmetic > (vector:T, otherVector:U) -> Double  {
+    let deltaAngle = sin(self.angleInRadians(vector) - self.angleInRadians(otherVector))
+    return self.magnitude(vector) * self.magnitude(otherVector) * deltaAngle
   }
   
   
   static func distanceTo <T : VectorArithmetic, U : VectorArithmetic > (vector:T, otherVector:U) -> Double {
     var deltaX = Double.abs(vector.horizontal - otherVector.horizontal)
     var deltaY = Double.abs(vector.vertical   - otherVector.vertical)
-    return T(horizontal: deltaX, vertical: deltaY).magnitude
+    return self.magnitude(T(horizontal: deltaX, vertical: deltaY))
   }
   
-  
-  
   static func normalized <T : VectorArithmetic>(vector:T) -> T {
-    let length = vector.length
+    let length = self.magnitude(vector)
     var newPoint:T = vector
     if(length > 0.0) {
       newPoint /= length
@@ -159,15 +160,15 @@ struct InternalVectorArithmetic {
   
   static func limit <T : VectorArithmetic>(vector:T, scalar:Double) -> T  {
     var newPoint = vector
-    if(vector.magnitude > scalar) {
-      newPoint = newPoint.normalized * scalar
+    if(self.magnitude(vector) > scalar) {
+      newPoint = self.normalized(newPoint) * scalar
     }
     return newPoint
   }
 
   
   static func vectorWithAngle <T:VectorArithmetic>(vector:T, scalar:Double) -> T {
-    let length = vector.length
+    let length = self.magnitude(vector)
     return T(horizontal: cos(scalar) * length, vertical: sin(scalar) * length)
   }
 }
@@ -209,6 +210,7 @@ extension CGPoint: VectorArithmetic  {
   var length:Double { return self.magnitude }
   var lengthSquared:Double { return InternalVectorArithmetic.lengthSquared(self) }
   func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
+  func crossProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.crossProduct(self, otherVector: vector) }
   func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
   var reversed:CGPoint { return InternalVectorArithmetic.reversed(self) }
   var normalized:CGPoint { return InternalVectorArithmetic.normalized(self) }
@@ -256,6 +258,8 @@ extension CGSize: VectorArithmetic   {
   var length:Double { return self.magnitude }
   var lengthSquared:Double { return InternalVectorArithmetic.lengthSquared(self) }
   func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
+  func crossProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.crossProduct(self, otherVector: vector) }
+
   func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
   var reversed:CGSize { return InternalVectorArithmetic.reversed(self) }
   var normalized:CGSize { return InternalVectorArithmetic.normalized(self) }
@@ -305,6 +309,7 @@ extension CGVector: VectorArithmetic   {
   var length:Double { return self.magnitude }
   var lengthSquared:Double { return InternalVectorArithmetic.lengthSquared(self) }
   func dotProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.dotProduct(self, otherVector: vector) }
+  func crossProduct <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.crossProduct(self, otherVector: vector) }
   func distanceTo <T : VectorArithmetic> (vector:T) -> Double { return InternalVectorArithmetic.distanceTo(self, otherVector: vector) }
   var reversed:CGVector { return InternalVectorArithmetic.reversed(self) }
   var normalized:CGVector { return InternalVectorArithmetic.normalized(self) }

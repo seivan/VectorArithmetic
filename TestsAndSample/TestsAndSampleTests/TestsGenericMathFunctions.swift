@@ -42,6 +42,13 @@ class TestsGenericMathFunctions<T:VectorArithmetic>:TestMathFunctions {
     XCTAssertEqualWithAccuracy(candidate, expected, 0.000000000000001)
     
   }
+  func testCrossProduct() {
+    let candidate:Double = self.vector.crossProduct(CGPoint(x: 1, y: 2))
+    var expected = -2.0
+    XCTAssertEqualWithAccuracy(candidate, expected, 0.000000000000001)
+    
+  }
+
   func testDistanceTo() {
     let candidate:Double = self.vector.distanceTo(CGPoint(x: 100, y: 100))
     var expected = 138.592929112563
