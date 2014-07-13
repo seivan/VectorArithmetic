@@ -134,6 +134,10 @@ struct InternalVectorArithmetic {
   static func dotProduct <T : VectorOperatable, U : VectorOperatable > (vector:T, otherVector:U) -> Double  {
     return (vector.horizontal*otherVector.horizontal) + (vector.vertical*otherVector.vertical)
   }
+  static func crossProduct <T : VectorOperatable, U : VectorOperatable > (vector:T, otherVector:U) -> Double  {
+    let deltaAngle = sin(angleInRadians(vector) - angleInRadians(otherVector))
+    return magnitude(vector) * magnitude(otherVector) * deltaAngle
+  }
   
   
   static func distanceTo <T : VectorArithmetic, U : VectorArithmetic > (vector:T, otherVector:U) -> Double {
