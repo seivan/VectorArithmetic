@@ -57,9 +57,9 @@ class TestsGenericMathFunctions<T:VectorArithmetic>:TestMathFunctions {
   }
   func testReversed() {
     let candidate:T = self.vector.reversed
-    var expected = -2
-    XCTAssertEqualObjects(candidate.horizontal, expected);
-    XCTAssertEqualObjects(candidate.vertical, expected);
+    var expected = -2.0
+    XCTAssertEqual(candidate.horizontal, expected);
+    XCTAssertEqual(candidate.vertical, expected);
     
   }
   func testNormalized() {
