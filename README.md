@@ -10,7 +10,7 @@ Just want to point out that Apple themselves uses **CGPoint** throughout UIKit f
 
 
 ### Dependency
->To get better interoperability between 32 and 64-bit numerical types use 
+>To get better interoperability between different numerical types use 
 * [ScalarArithmetic](https://github.com/seivan/ScalarArithmetic)
 
 ### Usage
