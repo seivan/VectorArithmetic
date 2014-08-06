@@ -25,88 +25,88 @@ protocol VectorArithmetic : VectorOperatable {
 
 //Since these structs already have != operator for themselves, but not against each we can't use a generic constraint
 
-@infix func != (lhs: CGVector , rhs: CGSize) -> Bool {
+func != (lhs: CGVector , rhs: CGSize) -> Bool {
   return (lhs == rhs) == false
 }
-@infix func != (lhs: CGVector , rhs: CGPoint) -> Bool {
+func != (lhs: CGVector , rhs: CGPoint) -> Bool {
   return (lhs == rhs) == false
 }
-@infix func != (lhs: CGSize , rhs: CGVector) -> Bool {
+func != (lhs: CGSize , rhs: CGVector) -> Bool {
   return (lhs == rhs) == false
 }
-@infix func != (lhs: CGSize , rhs: CGPoint) -> Bool {
+func != (lhs: CGSize , rhs: CGPoint) -> Bool {
   return (lhs == rhs) == false
 }
-@infix func != (lhs: CGPoint , rhs: CGVector) -> Bool {
+func != (lhs: CGPoint , rhs: CGVector) -> Bool {
   return (lhs == rhs) == false
 }
-@infix func != (lhs: CGPoint , rhs: CGSize) -> Bool {
+func != (lhs: CGPoint , rhs: CGSize) -> Bool {
   return (lhs == rhs) == false
 }
 
-@infix func == <T:VectorOperatable, U:VectorOperatable> (lhs:T,rhs:U) -> Bool {
+func == <T:VectorOperatable, U:VectorOperatable> (lhs:T,rhs:U) -> Bool {
     return (lhs.horizontal == rhs.horizontal && lhs.vertical == rhs.vertical)
 }
 //Gives ambigious operator since the struct already does compare to its own type
-//@infix func != <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
+//func != <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
 //  return (lhs == rhs) == false
 //}
-@infix func <= <T:VectorOperatable, U:VectorOperatable>(lhs:T, rhs:U) -> Bool {
+func <= <T:VectorOperatable, U:VectorOperatable>(lhs:T, rhs:U) -> Bool {
     return (lhs <  rhs) || (lhs == rhs)
 }
-@infix func < <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
+func < <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
   return (lhs.horizontal <  rhs.horizontal || lhs.vertical < rhs.vertical)
 }
-@infix func >= <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
+func >= <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
     return (lhs > rhs) || ( lhs == rhs)
 }
-@infix func > <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
+func > <T:VectorOperatable, U:VectorOperatable>(lhs: T , rhs: U) -> Bool {
     return (lhs <= rhs) == false
 }
 
-@infix func - <T:VectorOperatable, U:VectorOperatable>(lhs: T, rhs:U) -> T  {
+func - <T:VectorOperatable, U:VectorOperatable>(lhs: T, rhs:U) -> T  {
   return T(horizontal: lhs.horizontal-rhs.horizontal, vertical: lhs.vertical-rhs.vertical)
 }
-@assignment  @infix func -= <T:VectorOperatable, U:VectorOperatable>(inout lhs: T, rhs:U)  {
+func -= <T:VectorOperatable, U:VectorOperatable>(inout lhs: T, rhs:U)  {
   lhs = lhs - rhs
 }
 
-@infix func + <T:VectorOperatable, U:VectorOperatable>(lhs: T, rhs:U) -> T  {
+func + <T:VectorOperatable, U:VectorOperatable>(lhs: T, rhs:U) -> T  {
   return T(horizontal: lhs.horizontal+rhs.horizontal, vertical: lhs.vertical+rhs.vertical)
 }
-@assignment  @infix func += <T:VectorOperatable, U:VectorOperatable>(inout lhs: T, rhs:U)  {
+func += <T:VectorOperatable, U:VectorOperatable>(inout lhs: T, rhs:U)  {
   lhs = lhs + rhs
 }
 
-@infix func * <T:VectorOperatable, U:VectorOperatable>(lhs: T, rhs:U) -> T  {
+func * <T:VectorOperatable, U:VectorOperatable>(lhs: T, rhs:U) -> T  {
   return T(horizontal: lhs.horizontal*rhs.horizontal, vertical: lhs.vertical*rhs.vertical);
 }
-@assignment @infix func *= <T:VectorOperatable, U:VectorOperatable>(inout lhs: T, rhs:U)  {
+func *= <T:VectorOperatable, U:VectorOperatable>(inout lhs: T, rhs:U)  {
   lhs = lhs * rhs
   
 }
 
-@infix func / <T:VectorOperatable, U:VectorOperatable>(lhs:T, rhs:U) -> T  {
+func / <T:VectorOperatable, U:VectorOperatable>(lhs:T, rhs:U) -> T  {
   return T(horizontal: lhs.horizontal/rhs.horizontal, vertical: lhs.vertical/rhs.vertical);
 }
-@assignment @infix func /= <T:VectorOperatable, U:VectorOperatable>(inout lhs:T, rhs:U) -> T  {
+func /= <T:VectorOperatable, U:VectorOperatable>(inout lhs:T, rhs:U) -> T  {
   lhs = lhs / rhs
   return lhs
 }
 
 
-@infix func / <T:VectorOperatable>(lhs:T, scalar:Double) -> T  {
+func / <T:VectorOperatable>(lhs:T, scalar:Double) -> T  {
   return T(horizontal: lhs.horizontal/scalar, vertical: lhs.vertical/scalar);
 }
-@assignment  @infix func /= <T:VectorOperatable>(inout lhs:T, scalar:Double) -> T  {
+func /= <T:VectorOperatable>(inout lhs:T, scalar:Double) -> T  {
   lhs = lhs / scalar
   return lhs
 }
 
-@infix func * <T:VectorOperatable>(lhs: T, scalar:Double) -> T  {
+func * <T:VectorOperatable>(lhs: T, scalar:Double) -> T  {
   return T(horizontal: lhs.horizontal*scalar, vertical: lhs.vertical*scalar)
 }
-@assignment @infix func *= <T:VectorOperatable>(inout lhs: T, value:Double)   {
+func *= <T:VectorOperatable>(inout lhs: T, value:Double)   {
   lhs = lhs * value
 }
 
@@ -182,7 +182,7 @@ extension CGPoint: VectorArithmetic  {
     self.init(x: horizontal, y: vertical)
   }
   
-#if !(arch(x86_64) || arch(arm64))
+
   init(x:Double, y:Double) {
     self.init(x:CGFloat(x), y:CGFloat(y))
   }
@@ -195,16 +195,6 @@ extension CGPoint: VectorArithmetic  {
     set {self.y = CGFloat(newValue)  }
   }
   
-#else
-  var horizontal:Double {
-    get { return self.x     }
-    set { self.x = newValue }
-  }
-  var vertical:Double {
-    get { return self.y     }
-    set { self.y = newValue }
-  }
-#endif
 
   var angleInRadians:Double { return InternalVectorArithmetic.angleInRadians(self)}
   var magnitude:Double { return InternalVectorArithmetic.magnitude(self) }
@@ -229,7 +219,7 @@ extension CGSize: VectorArithmetic   {
     self.init(width: horizontal, height: vertical)
   }
 
-#if !(arch(x86_64) || arch(arm64))
+
   init(width:Double, height:Double) {
     self.init(width:CGFloat(width), height:CGFloat(height))
   }
@@ -242,16 +232,6 @@ extension CGSize: VectorArithmetic   {
     set {self.height = CGFloat(newValue)  }
   }
   
-  #else
-  var horizontal:Double {
-    get { return self.width }
-    set { self.width = newValue }
-  }
-  var vertical:Double {
-    get { return self.height     }
-    set { self.height = newValue }
-  }
-  #endif
   
   
   var angleInRadians:Double { return InternalVectorArithmetic.angleInRadians(self) }
@@ -279,7 +259,7 @@ extension CGVector: VectorArithmetic   {
 
   }
   
-#if !(arch(x86_64) || arch(arm64))
+
   init(_ dx:Double, _ dy:Double) {
     self.dx = CGFloat(dx)
     self.dy = CGFloat(dy)
@@ -294,16 +274,6 @@ extension CGVector: VectorArithmetic   {
     set {self.dy = CGFloat(newValue)  }
   }
   
-#else
-  var horizontal:Double {
-    get { return self.dx     }
-    set { self.dx = newValue }
-  }
-  var vertical:Double {
-    get { return self.dy     }
-    set { self.dy = newValue }
-  }
-#endif
 
   var angleInRadians:Double { return InternalVectorArithmetic.angleInRadians(self) }
   var magnitude:Double { return InternalVectorArithmetic.magnitude(self) }
