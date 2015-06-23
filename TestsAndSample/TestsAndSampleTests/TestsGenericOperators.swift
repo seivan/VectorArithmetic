@@ -178,6 +178,10 @@ class TestsGenericOperators<T:VectorOperatable, U:VectorOperatable, Z:VectorOper
     XCTAssertEqual(self.vectorVector.horizontal, pow(self.doubleValue, 2))
     XCTAssertEqual(self.vectorVector.vertical, pow(self.doubleValue, 2))
     
+    self.vectorVector = 2 * self.vectorVector
+    XCTAssertEqual(self.vectorVector.horizontal, pow(self.doubleValue, 3))
+    XCTAssertEqual(self.vectorVector.vertical, pow(self.doubleValue, 3))
+    
   }
   func testMultiplicationScalarAssignment() {
     self.vectorVector *= 2
