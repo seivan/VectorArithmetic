@@ -289,3 +289,27 @@ extension CGVector: VectorArithmetic   {
   public func angled(scalar:Double) -> CGVector { return InternalVectorArithmetic.vectorWithAngle(self, scalar: scalar) }
 
 }
+
+extension VectorOperatable {
+    public var point: CGPoint {
+        return CGPoint(x: horizontal, y: vertical)
+    }
+
+    public var size: CGSize {
+        return CGSize(width: horizontal, height: vertical)
+    }
+
+    public var vector: CGVector {
+        return CGVector(dx: horizontal, dy: vertical)
+    }
+}
+
+extension CGRect {
+    public var widthVector: CGVector {
+        return CGVector(dx: size.width, dy: 0)
+    }
+
+    public var heightVector: CGVector {
+        return CGVector(dx: 0, dy: size.height)
+    }
+}
