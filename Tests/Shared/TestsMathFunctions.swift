@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreGraphics
+import VectorArithmetic
 
 
 class TestsMathFunctions: XCTestCase,TestMathFunctions {

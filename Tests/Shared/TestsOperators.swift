@@ -8,6 +8,7 @@
 
 import XCTest
 import CoreGraphics
+import VectorArithmetic
 
 class TestsOperators: XCTestCase, TestOperators {
   let testerCGPoint:TestsGenericOperators<CGPoint,CGSize,CGVector> = TestsGenericOperators<CGPoint,CGSize,CGVector>()

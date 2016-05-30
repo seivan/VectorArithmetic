@@ -8,12 +8,13 @@
 
 import XCTest
 import CoreGraphics
+import VectorArithmetic
 
 class TestsInitializerVectorOperatable : XCTestCase {
   let doubleValue = 2.0
   
   func testCGPointCustomInit() {
-    var vectorPoint = CGPoint(horizontal: self.doubleValue, vertical: self.doubleValue)
+    let vectorPoint = CGPoint(horizontal: self.doubleValue, vertical: self.doubleValue)
     var vectorGeneric = vectorPoint
     
     XCTAssertEqual(vectorPoint.x, CGFloat(self.doubleValue))
@@ -24,7 +25,7 @@ class TestsInitializerVectorOperatable : XCTestCase {
   }
   
   func testCGPointOverloadInit() {
-    var vectorPoint = CGPoint(x: self.doubleValue, y: self.doubleValue)
+    let vectorPoint = CGPoint(x: self.doubleValue, y: self.doubleValue)
     var vectorGeneric = vectorPoint
 
     XCTAssertEqual(vectorPoint.x, CGFloat(self.doubleValue))
@@ -35,7 +36,7 @@ class TestsInitializerVectorOperatable : XCTestCase {
   }
 
   func testCGSizeCustomInit() {
-    var vectorSize = CGSize(horizontal: self.doubleValue, vertical: self.doubleValue)
+    let vectorSize = CGSize(horizontal: self.doubleValue, vertical: self.doubleValue)
     var vectorGeneric = vectorSize
     
     XCTAssertEqual(vectorSize.width, CGFloat(self.doubleValue))
@@ -46,7 +47,7 @@ class TestsInitializerVectorOperatable : XCTestCase {
   }
   
   func testCGSizeOverloadInit() {
-    var vectorSize = CGSize(width: self.doubleValue, height: self.doubleValue)
+    let vectorSize = CGSize(width: self.doubleValue, height: self.doubleValue)
     var vectorGeneric = vectorSize
     
     XCTAssertEqual(vectorSize.width, CGFloat(self.doubleValue))
@@ -56,7 +57,7 @@ class TestsInitializerVectorOperatable : XCTestCase {
     
   }
   func testCGVectorCustomInit() {
-    var vectorVector = CGVector(horizontal: self.doubleValue, vertical: self.doubleValue)
+    let vectorVector = CGVector(horizontal: self.doubleValue, vertical: self.doubleValue)
     var vectorGeneric = vectorVector
     
     XCTAssertEqual(vectorVector.dx, CGFloat(self.doubleValue))
@@ -67,7 +68,7 @@ class TestsInitializerVectorOperatable : XCTestCase {
   }
   
   func testCGVectorOverloadInit() {
-    var vectorVector = CGVector(self.doubleValue,self.doubleValue)
+    let vectorVector = CGVector(self.doubleValue,self.doubleValue)
     var vectorGeneric = vectorVector
     
     XCTAssertEqual(vectorVector.dx, CGFloat(self.doubleValue))
