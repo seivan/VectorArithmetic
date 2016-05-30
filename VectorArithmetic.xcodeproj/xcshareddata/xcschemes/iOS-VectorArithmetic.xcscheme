@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "221518BE1CFC2E0D00040369"
-               BuildableName = "iOS-VectorArithmetic.framework"
+               BuildableName = "VectorArithmetic.framework"
                BlueprintName = "iOS-VectorArithmetic"
                ReferencedContainer = "container:VectorArithmetic.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "221518BE1CFC2E0D00040369"
-            BuildableName = "iOS-VectorArithmetic.framework"
+            BuildableName = "VectorArithmetic.framework"
             BlueprintName = "iOS-VectorArithmetic"
             ReferencedContainer = "container:VectorArithmetic.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "221518BE1CFC2E0D00040369"
-            BuildableName = "iOS-VectorArithmetic.framework"
+            BuildableName = "VectorArithmetic.framework"
             BlueprintName = "iOS-VectorArithmetic"
             ReferencedContainer = "container:VectorArithmetic.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "221518BE1CFC2E0D00040369"
-            BuildableName = "iOS-VectorArithmetic.framework"
+            BuildableName = "VectorArithmetic.framework"
             BlueprintName = "iOS-VectorArithmetic"
             ReferencedContainer = "container:VectorArithmetic.xcodeproj">
          </BuildableReference>
