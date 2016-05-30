@@ -51,8 +51,6 @@
 		221518DA1CFC2E9F00040369 /* iOS-VectorArithmeticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-VectorArithmeticTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		221518EC1CFC2EE900040369 /* VectorArithmetic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorArithmetic.swift; sourceTree = "<group>"; };
 		221518ED1CFC2EE900040369 /* VectorArithmetic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VectorArithmetic.h; sourceTree = "<group>"; };
-		221518F01CFC2EE900040369 /* iOS-InfoTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-InfoTests.plist"; sourceTree = "<group>"; };
-		221518F21CFC2EE900040369 /* OSX-InfoTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSX-InfoTests.plist"; sourceTree = "<group>"; };
 		221518F61CFC302200040369 /* TestProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestProtocol.swift; sourceTree = "<group>"; };
 		221518F71CFC302200040369 /* TestsGenericMathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsGenericMathFunctions.swift; sourceTree = "<group>"; };
 		221518F81CFC302200040369 /* TestsGenericOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsGenericOperators.swift; sourceTree = "<group>"; };
@@ -60,6 +58,7 @@
 		221518FA1CFC302200040369 /* TestsMathFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsMathFunctions.swift; sourceTree = "<group>"; };
 		221518FB1CFC302200040369 /* TestsOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsOperators.swift; sourceTree = "<group>"; };
 		2215190A1CFC37DD00040369 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		221519141CFC3CAA00040369 /* InfoTests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = InfoTests.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +160,7 @@
 		221518EE1CFC2EE900040369 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				221519141CFC3CAA00040369 /* InfoTests.plist */,
 				221518EF1CFC2EE900040369 /* iOS */,
 				221518F11CFC2EE900040369 /* OSX */,
 				221518F31CFC2EE900040369 /* Shared */,
@@ -171,7 +171,6 @@
 		221518EF1CFC2EE900040369 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				221518F01CFC2EE900040369 /* iOS-InfoTests.plist */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -179,7 +178,6 @@
 		221518F11CFC2EE900040369 /* OSX */ = {
 			isa = PBXGroup;
 			children = (
-				221518F21CFC2EE900040369 /* OSX-InfoTests.plist */,
 			);
 			path = OSX;
 			sourceTree = "<group>";
@@ -697,7 +695,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/OSX/OSX-InfoTests.plist";
+				INFOPLIST_FILE = Tests/InfoTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -741,7 +739,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/OSX/OSX-InfoTests.plist";
+				INFOPLIST_FILE = Tests/InfoTests.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -788,7 +786,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/iOS/iOS-InfoTests.plist";
+				INFOPLIST_FILE = Tests/InfoTests.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -831,7 +829,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "Tests/iOS/iOS-InfoTests.plist";
+				INFOPLIST_FILE = Tests/InfoTests.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
