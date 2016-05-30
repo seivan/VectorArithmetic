@@ -106,7 +106,10 @@ public func /= <T:VectorOperatable>(inout lhs:T, scalar:Double) -> T  {
 public func * <T:VectorOperatable>(lhs: T, scalar:Double) -> T  {
   return T(horizontal: lhs.horizontal*scalar, vertical: lhs.vertical*scalar)
 }
-public func *= <T:VectorOperatable>(inout lhs: T, value:Double)   {
+func * <T:VectorOperatable>(scalar:Double, rhs: T) -> T  {
+  return T(horizontal: rhs.horizontal*scalar, vertical: rhs.vertical*scalar)
+}
+func *= <T:VectorOperatable>(inout lhs: T, value:Double)   {
   lhs = lhs * value
 }
 
