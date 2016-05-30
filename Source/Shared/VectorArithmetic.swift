@@ -115,45 +115,45 @@ func *= <T:VectorOperatable>(inout lhs: T, value:Double)   {
 
 
 
-struct InternalVectorArithmetic {
+internal struct InternalVectorArithmetic {
     
-  public static func angleInRadians  <T : VectorArithmetic>(vector:T) -> Double {
+  internal static func angleInRadians  <T : VectorArithmetic>(vector:T) -> Double {
     let normalizedVector = self.normalized(vector)
 
     let theta = atan2(normalizedVector.vertical, normalizedVector.horizontal)
     return theta + M_PI_2 * -1
   }
   
-  public static func magnitude <T : VectorArithmetic>(vector:T) -> Double {
+  internal static func magnitude <T : VectorArithmetic>(vector:T) -> Double {
     return sqrt(self.lengthSquared(vector))
   }
   
-  public static func lengthSquared <T : VectorArithmetic>(vector:T) -> Double {
+  internal static func lengthSquared <T : VectorArithmetic>(vector:T) -> Double {
     return ((vector.horizontal*vector.horizontal) + (vector.vertical*vector.vertical))
   }
   
   
-  public static func reversed <T : VectorArithmetic>(vector:T) -> T {
+  internal static func reversed <T : VectorArithmetic>(vector:T) -> T {
     return vector * -1
   }
   
-  public static func dotProduct <T : VectorOperatable, U : VectorOperatable > (vector:T, otherVector:U) -> Double  {
+  internal static func dotProduct <T : VectorOperatable, U : VectorOperatable > (vector:T, otherVector:U) -> Double  {
     return (vector.horizontal*otherVector.horizontal) + (vector.vertical*otherVector.vertical)
   }
 
-  public static func crossProduct <T : VectorArithmetic, U : VectorArithmetic > (vector:T, otherVector:U) -> Double  {
+  internal static func crossProduct <T : VectorArithmetic, U : VectorArithmetic > (vector:T, otherVector:U) -> Double  {
     let deltaAngle = sin(self.angleInRadians(vector) - self.angleInRadians(otherVector))
     return self.magnitude(vector) * self.magnitude(otherVector) * deltaAngle
   }
   
   
-  public static func distanceTo <T : VectorArithmetic, U : VectorArithmetic > (vector:T, otherVector:U) -> Double {
-    var deltaX = Double.abs(vector.horizontal - otherVector.horizontal)
-    var deltaY = Double.abs(vector.vertical   - otherVector.vertical)
+  internal static func distanceTo <T : VectorArithmetic, U : VectorArithmetic > (vector:T, otherVector:U) -> Double {
+    let deltaX = Double.abs(vector.horizontal - otherVector.horizontal)
+    let deltaY = Double.abs(vector.vertical   - otherVector.vertical)
     return self.magnitude(T(horizontal: deltaX, vertical: deltaY))
   }
   
-  public static func normalized <T : VectorArithmetic>(vector:T) -> T {
+  internal static func normalized <T : VectorArithmetic>(vector:T) -> T {
     let length = self.magnitude(vector)
     var newPoint:T = vector
     if(length > 0.0) {
@@ -162,7 +162,7 @@ struct InternalVectorArithmetic {
     return newPoint
   }
   
-  public static func limit <T : VectorArithmetic>(vector:T, scalar:Double) -> T  {
+  internal static func limit <T : VectorArithmetic>(vector:T, scalar:Double) -> T  {
     var newPoint = vector
     if(self.magnitude(vector) > scalar) {
       newPoint = self.normalized(newPoint) * scalar
@@ -171,7 +171,7 @@ struct InternalVectorArithmetic {
   }
 
   
-  public static func vectorWithAngle <T:VectorArithmetic>(vector:T, scalar:Double) -> T {
+  internal static func vectorWithAngle <T:VectorArithmetic>(vector:T, scalar:Double) -> T {
     let length = self.magnitude(vector)
     return T(horizontal: cos(scalar) * length, vertical: sin(scalar) * length)
   }
@@ -186,9 +186,10 @@ extension CGPoint: VectorArithmetic  {
   }
   
 
-  public init(x:Double, y:Double) {
-    self.init(x:CGFloat(x), y:CGFloat(y))
-  }
+//  public init(x:Double, y:Double) {
+//    self.init(x:CGFloat(x), y:CGFloat(y))
+//  }
+    
   public var horizontal:Double {
     get { return Double(self.x)      }
     set { self.x = CGFloat(newValue) }
@@ -223,9 +224,10 @@ extension CGSize: VectorArithmetic   {
   }
 
 
-  public init(width:Double, height:Double) {
-    self.init(width:CGFloat(width), height:CGFloat(height))
-  }
+//  public init(width:Double, height:Double) {
+//    self.init(width:CGFloat(width), height:CGFloat(height))
+//  }
+    
   public var horizontal:Double {
     get { return Double(self.width)      }
     set { self.width = CGFloat(newValue) }
