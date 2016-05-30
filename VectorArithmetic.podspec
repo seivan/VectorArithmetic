@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
   url            = "https://github.com/seivan/#{name}"
   git_url        = "#{url}.git"
   s.name         = name
-  version        = "1.3.1"
-  source_files   = "#{name}/**/*.{swift}"
+  version        = "1.3.2"
+  source_files   = "Source/**/*.{swift}"
 
   s.version      = version
   s.summary      = "Operators for Double and math properties and functions"
